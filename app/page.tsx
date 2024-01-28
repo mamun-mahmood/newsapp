@@ -6,12 +6,11 @@ export const getNews = async () => {
 }
 export default async function Home() {
   const { articles = [] } = await getNews() || {}
-const viewMode = "grid"
   return (
     <main className="min-h-screen  flex flex-col items-center  ">
       <section className="max-w-screen-2xl">
-     <NewsContainer articles={articles} />
-     </section>
+        <NewsContainer articles={articles} />
+      </section>
     </main>
   );
 }
