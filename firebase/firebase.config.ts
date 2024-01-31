@@ -7,13 +7,11 @@ import {
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyAflOp4Z1DTNA9qYVwEiLeQb72p787HH3s",
-  authDomain: "fbclone-f9186.firebaseapp.com",
-  projectId: "fbclone-f9186",
-  storageBucket: "fbclone-f9186.appspot.com",
-  messagingSenderId: "43317436789",
-  appId: "1:43317436789:web:475eb09a07d327735cb33c",
-  measurementId: "G-DBXWSLMKLD",
+  apiKey: process.env.NEXT_PUBLIC_apiKey,
+  authDomain: process.env.NEXT_PUBLIC_authDomain,
+  projectId: process.env.NEXT_PUBLIC_projectId,
+  storageBucket: process.env.NEXT_PUBLIC_storageBucket,
+  appId: process.env.NEXT_PUBLIC_apiKey,
 };
 
 const app = initializeApp(firebaseConfig);

@@ -16,9 +16,9 @@ const SignIn = () => {
     }
     return (
         <form className="flex flex-col items-center space-y-4" onSubmit={handleSubmit}>
-            <h1 className="text-3xl font-bold text-black">Sign Up</h1>
+            <h1 className="text-3xl font-bold   ">Sign Up</h1>
             <div className="flex flex-col space-y-2">
-                <label htmlFor="email" className="text-sm font-bold text-black">
+                <label htmlFor="email" className="text-sm font-bold   ">
                     Email
                 </label>
                 <input
@@ -27,11 +27,11 @@ const SignIn = () => {
                     type="email"
                     autoComplete="email"
                     required
-                    className="px-4 py-2 border border-gray-300 rounded-md text-black"
+                    className="px-4 py-2 border border-gray-300 rounded-md   text-black"
                 />
             </div>
             <div className="flex flex-col space-y-2">
-                <label htmlFor="password" className="text-sm font-bold text-black">
+                <label htmlFor="password" className="text-sm font-bold   ">
                     Password
                 </label>
                 <input
@@ -40,7 +40,7 @@ const SignIn = () => {
                     type="password"
                     autoComplete="password"
                     required
-                    className="px-4 py-2 border border-gray-300 rounded-md text-black"
+                    className="px-4 py-2 border border-gray-300 rounded-md text-black  "
                 />
                 <Link href="/auth/signup" className="text-right">
                     Create an account
