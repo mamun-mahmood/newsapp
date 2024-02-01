@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen  flex flex-col items-center  ">
       <section className="max-w-screen-2xl">
-        <NewsContainer articles={articles} />
+        {articles.length &&<NewsContainer articles={articles} />}
       </section>
     </main>
   );
