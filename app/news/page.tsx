@@ -1,5 +1,6 @@
 "use client"
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 const Page = () => {
   const search = useSearchParams();
   const title = search.get("title") as string;
@@ -15,5 +16,11 @@ const Page = () => {
     </div>
   );
 };
-
-export default Page;
+const NewPage = () => {
+  return (
+    <Suspense>
+      <Page />
+    </Suspense>
+  );
+}
+export default NewPage;
