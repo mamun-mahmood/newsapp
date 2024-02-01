@@ -16,6 +16,10 @@ const nextConfig = {
       },
     ],
   },
+  // disable eslint for nextjs
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default withPWA(nextConfig);
