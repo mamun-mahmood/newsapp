@@ -10,7 +10,7 @@ interface NewsContainerProps {
     articles: [];
 }
 
-const NewsContainer: FC<NewsContainerProps> = () => {
+const NewsContainer: FC<NewsContainerProps> = ({ articles: articlesData=[] }) => {
     const router = useRouter()
     const [viewMode, setViewMode] = useState("grid-cols-2")
     const [user, setUser] = useState({ uid: "" })
@@ -29,15 +29,9 @@ const NewsContainer: FC<NewsContainerProps> = () => {
         }
     }
     useEffect(() => {
-        const getNews = async () => {
-            const res = await fetch(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}&pageSize=10&page=${page}`)
-            const data = await res.json()
-            return (data)
-        }
-        getNews().then((data) => {
-            setArticles(data.articles)
-        })
-    }, [page])
+        setArticles(articlesData.slice((page - 1) * 10, page * 10))
+    }, [articlesData, page])
+
     const handleNext = () => {
         setPage(page + 1)
         window.scrollTo(0, 0)
