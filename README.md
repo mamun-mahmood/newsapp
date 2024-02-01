@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# News APP
 
-## Getting Started
+A PWA news app that uses the News API to fetch news articles with offline support.
 
-First, run the development server:
+## SCREENSHOTS
+![Screenshot](./SS1.png)
+![Screenshot](./SS2.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository
+2. Run `npm install` to install the dependencies
+3. .env file is required with the following variables:
+    -NEXT_PUBLIC_NEWS_API_KEY=
+    -NEXT_PUBLIC_apiKey=
+    -NEXT_PUBLIC_authDomain=
+    -NEXT_PUBLIC_projectId=
+    -NEXT_PUBLIC_storageBucket=
+    -NEXT_PUBLIC_appId=
+4. Run `npm run dev` to start the development server
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+The API may not work if it crosses the limit of requests. You can use your own API key to fetch the news articles. Add NEXT_PUBLIC_NEWS_API_KEY in the .env file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The offline will work on production build. Check the live site [here](https://newsapp-gules.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Guidelines for contributing to the project, including information on how to submit pull requests or report issues.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Information about the project's license and any relevant terms or conditions.
