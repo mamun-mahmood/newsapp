@@ -91,9 +91,9 @@ const NewsContainer: FC<NewsContainerProps> = () => {
                 </label>
             </div>
             <div className={`grid ${viewMode} gap-1 place-items-center`}>
-                {articles.map((article: any, idx: number) => (
+                {articles?.length ? articles.map((article: any, idx: number) => (
                     <NewsCard key={idx} title={article.title} description={article.description} urlToImage={article.urlToImage} publishedAt={article.publishedAt} user={user} favorites={favorites} />
-                ))}
+                )) : <div className='text-center'> No articles found</div>}
 
             </div>
             <div className="flex justify-between items-center space-x-2 h-16 w-full bg-slate-800 p-2 rounded-lg my-2">
