@@ -1,16 +1,18 @@
 "use client"
-import { FC, useEffect, useLayoutEffect, useState } from 'react';
-import NewsCard from './NewsCard';
-import { auth, db, logoutFirebase, signIn } from '@/firebase/firebase.config';
-import { getAuth, onAuthStateChanged, } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
+import { auth, db, logoutFirebase } from '@/firebase/firebase.config';
+import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import NewsCard from './NewsCard';
 
-interface NewsContainerProps {
-    articles: [];
-}
-
-const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
+const NewsContainer = () => {
+    const getNews = async () => {
+        const res = await fetch(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`)
+        const data = await res.json()
+        return (data)
+    }
+    const [articles, setArticles] = useState([]) as any
     const router = useRouter()
     const [viewMode, setViewMode] = useState("grid-cols-2")
     const [user, setUser] = useState({ uid: "" })
@@ -52,6 +54,10 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
     useEffect(() => {
         const viewMode = localStorage.getItem("viewMode") || "grid-cols-2"
         setViewMode(viewMode)
+        getNews().then((data) => {
+            setArticles(data.articles)
+        })
+
     }, [])
     if (!user?.uid) return <div>loading...</div>
     if (user?.uid) return (

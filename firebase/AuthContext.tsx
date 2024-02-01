@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { FC } from 'react';
 import {
     onAuthStateChanged,
     getAuth,
@@ -11,11 +11,14 @@ const auth = getAuth(app);
 export const AuthContext = React.createContext({});
 
 export const useAuthContext = () => React.useContext(AuthContext);
+interface AuthContextProviderProps {
+    children: React.ReactNode;
+}
 
-export const AuthContextProvider = ({
+export const AuthContextProvider: FC<AuthContextProviderProps> = ({
     children,
 }) => {
-    const [user, setUser] = React.useState(null);
+    const [user, setUser] = React.useState(null) as any;
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
