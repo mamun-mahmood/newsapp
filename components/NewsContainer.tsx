@@ -91,7 +91,7 @@ const NewsContainer: FC<NewsContainerProps> = () => {
                 </label>
             </div>
             <div className={`grid ${viewMode} gap-1 place-items-center`}>
-                {articles.length && articles.map((article: any, idx: number) => (
+                {articles.map((article: any, idx: number) => (
                     <NewsCard key={idx} title={article.title} description={article.description} urlToImage={article.urlToImage} publishedAt={article.publishedAt} user={user} favorites={favorites} />
                 ))}
 
