@@ -3,12 +3,14 @@
 import { signUp } from "@/firebase/firebase.config";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const SignUp = () => {
     const router = useRouter()
-
+    const [loading, setLoading] = useState(false)
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true)
         const email = e.currentTarget.email.value;
         const password = e.currentTarget.password.value;
         const confirmPassword = e.currentTarget.confirmPassword.value;
@@ -23,6 +25,8 @@ const SignUp = () => {
         }
         ).catch((err) => {
             alert(err.message)
+        }).finally(() => {
+            setLoading(false)
         })
 
     }
@@ -34,7 +38,7 @@ const SignUp = () => {
                 <label htmlFor="email" className="text-sm font-bold  ">
                     Email
                 </label>
-                <input  
+                <input
                     id="email"
                     name="email"
                     type="email"
@@ -70,8 +74,8 @@ const SignUp = () => {
                     Sign in
                 </Link>
             </div>
-            <button className="px-4 py-2 text-lg font-bold text-white bg-blue-500 rounded-md">
-                Sign Up
+            <button disabled={loading} className="px-4 py-2 text-lg font-bold text-white bg-blue-500 rounded-md">
+                {loading ? "Loading..." : "Sign Up"}
             </button>
         </form>
 

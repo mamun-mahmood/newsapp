@@ -8,8 +8,8 @@ export default async function Home() {
   }
   const { articles = [] } = await getNews() || {}
   return (
-    <main className="min-h-screen flex flex-col items-center">
-      <section className="max-w-screen-lg w-full">
+    <main className="min-h-screen flex flex-col items-center ">
+      <section className="max-w-screen-md w-full">
         <NewsContainer articles={articles} />
       </section>
     </main>

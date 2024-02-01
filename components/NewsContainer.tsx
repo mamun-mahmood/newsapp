@@ -53,22 +53,25 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
         const viewMode = localStorage.getItem("viewMode") || "grid-cols-2"
         setViewMode(viewMode)
     }, [])
-    if (!user?.uid) return <div className='text-center'>Checking Auth...</div>
+    if (!user?.uid) return <div className="w-full">
+        <div className="w-full h-16 animate-pulse bg-slate-700 mt-1 mb-5 rounded-lg  flex items-center justify-center text-lg font-bold" >
+            Checking Authentication...
+        </div>
+        <div className={`grid ${viewMode} gap-1 text-lg`}>
+            {Array(4).fill(0).map((_, idx) => <div className='max-w-[384px] h-[400px] animate-pulse bg-slate-700 rounded-md' key={idx}></div>)}</div>
+    </div>
     return (
         <>
-            <div className="flex justify-between w-full">
+            <div className="h-16 flex justify-between w-full bg-slate-800 p-2 rounded-lg mb-5 mt-1">
                 <button onClick={() => logoutFirebase()} className="hover:bg-slate-700 text-white font-bold px-1 rounded">
                     Logout
                 </button>
-                <label className="switch rounded-md my-2">
+                <label className="switch rounded-lg my-2">
                     <input defaultChecked={viewMode === "grid-cols-1"} onChange={handleToggle} type="checkbox" />
                     <span className="slider" />
                 </label>
             </div>
             <div className={`grid ${viewMode} gap-1 place-items-center`}>
-                {!articles.length && <>
-                    {Array(10).fill(0).map((_, idx) => <div className='h-[400px]  max-w-[400px] animate-pulse bg-slate-700 rounded-md' key={idx}></div>)}
-                </>}
                 {articles.length && articles.map((article: any, idx: number) => (
                     <NewsCard key={idx} title={article.title} description={article.description} urlToImage={article.urlToImage} publishedAt={article.publishedAt} user={user} favorites={favorites} />
                 ))}
