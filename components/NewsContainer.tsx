@@ -12,8 +12,7 @@ interface NewsContainerProps {
 
 const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
     const router = useRouter()
-    const [viewMode, setViewMode] = useState(localStorage.getItem("viewMode") || "grid-cols-2")
-    
+    const [viewMode, setViewMode] = useState("grid-cols-2")
     const [user, setUser] = useState({ uid: "" })
     const [favorites, setFavorites] = useState([]) as any
     const handleToggle = () => {
@@ -50,7 +49,10 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
         });
 
     }, [router])
-
+    useEffect(() => {
+        const viewMode = localStorage.getItem("viewMode") || "grid-cols-2"
+        setViewMode(viewMode)
+    }, [])
     if (!user?.uid) return <div>loading...</div>
     if (user?.uid) return (
         <>
