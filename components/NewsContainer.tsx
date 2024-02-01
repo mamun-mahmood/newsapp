@@ -79,7 +79,7 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles: articlesData=[] }) =>
                 <button onClick={() => logoutFirebase()} className="hover:bg-slate-700 text-white font-bold px-1 rounded">
                     Logout
                 </button>
-                <label className="switch rounded-lg my-2">
+                <label className="switch rounded-lg my-2  bg-slate-400">
                     <input defaultChecked={viewMode === "grid-cols-1"} onChange={handleToggle} type="checkbox" />
                     <span className="slider" />
                 </label>
