@@ -63,14 +63,14 @@ const NewsCard: FC<NewsCardProps> = ({
         }
     }, [favorites, title])
     return (
-        <div className="w-[500px] flex flex-col items-center p-4  bg-slate-800 rounded-md" >
+        <div className="h-[400px] max-w-[400px] flex flex-col items-center p-4  bg-slate-800 rounded-md" >
             <img
                 className="rounded-xl"
                 src={urlToImage}
                 alt="Picture of the author"
                 width={500}
             />
-            <div className='flex justify-between items-center w-full my-1'>
+            <div className='flex justify-between items-center w-full'>
                 <p className="text-sm font-bold " >{new Date(publishedAt || "").toLocaleString()}</p>
                 <button onClick={hanleClick} className="bg-slate-100 text-white font-bold px-1 rounded w-12 ">
                     {isFavorite ? "❤️" : "🤍"}

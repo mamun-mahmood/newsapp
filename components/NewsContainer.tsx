@@ -1,10 +1,10 @@
 "use client"
-import { FC, useEffect, useLayoutEffect, useState } from 'react';
-import NewsCard from './NewsCard';
-import { auth, db, logoutFirebase, signIn } from '@/firebase/firebase.config';
-import { getAuth, onAuthStateChanged, } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
+import { auth, db, logoutFirebase } from '@/firebase/firebase.config';
+import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
+import { FC, useEffect, useState } from 'react';
+import NewsCard from './NewsCard';
 
 interface NewsContainerProps {
     articles: [];
@@ -53,11 +53,11 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
         const viewMode = localStorage.getItem("viewMode") || "grid-cols-2"
         setViewMode(viewMode)
     }, [])
-    if (!user?.uid) return <div>loading...</div>
-    if (user?.uid) return (
+    if (!user?.uid) return <div className='text-center'>Checking Auth...</div>
+    return (
         <>
-            <div className="flex justify-between">
-                <button onClick={() => logoutFirebase()} className="bgbg-slate-800 hover:bg-slate-700 text-white font-bold px-1 rounded">
+            <div className="flex justify-between w-full">
+                <button onClick={() => logoutFirebase()} className="hover:bg-slate-700 text-white font-bold px-1 rounded">
                     Logout
                 </button>
                 <label className="switch rounded-md my-2">
@@ -65,8 +65,11 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
                     <span className="slider" />
                 </label>
             </div>
-            <div className={`grid ${viewMode} gap-5`}>
-                {articles.map((article: any, idx: number) => (
+            <div className={`grid ${viewMode} gap-1 place-items-center`}>
+                {!articles.length && <>
+                    {Array(10).fill(0).map((_, idx) => <div className='h-[400px]  max-w-[400px] animate-pulse bg-slate-700 rounded-md' key={idx}></div>)}
+                </>}
+                {articles.length && articles.map((article: any, idx: number) => (
                     <NewsCard key={idx} title={article.title} description={article.description} urlToImage={article.urlToImage} publishedAt={article.publishedAt} user={user} favorites={favorites} />
                 ))}
 

@@ -10,7 +10,7 @@ const Page = () => {
   return (
     <div>
       <img className="w-full max-h-[500px] object-cover" src={urlToImage} alt={title + "image"} />
-      <p className="text-sm text-center font-bold">{new Date(publishedAt || "").toLocaleString() }</p>
+      <p className="text-sm text-center font-bold">{new Date(publishedAt || "").toLocaleString()}</p>
       <p className="text-2xl">{title}</p>
       <p>{description}</p>
     </div>
