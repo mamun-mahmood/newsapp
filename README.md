@@ -18,12 +18,12 @@ A PWA news app that uses the News API to fetch news articles with offline suppor
 1. Clone the repository
 2. Run `npm install` to install the dependencies
 3. .env file is required with the following variables:
-    -NEXT_PUBLIC_NEWS_API_KEY=
-    -NEXT_PUBLIC_apiKey=
-    -NEXT_PUBLIC_authDomain=
-    -NEXT_PUBLIC_projectId=
-    -NEXT_PUBLIC_storageBucket=
-    -NEXT_PUBLIC_appId=
+    - NEXT_PUBLIC_NEWS_API_KEY
+    - NEXT_PUBLIC_apiKey
+    - NEXT_PUBLIC_authDomain
+    - NEXT_PUBLIC_projectId
+    - NEXT_PUBLIC_storageBucket
+    - NEXT_PUBLIC_appId
 4. Run `npm run dev` to start the development server
 
 ## Usage
