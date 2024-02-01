@@ -1,7 +1,5 @@
-"use client";
+"use client"
 import { useSearchParams } from "next/navigation";
-
-
 const Page = () => {
   const search = useSearchParams();
   const title = search.get("title") as string;
