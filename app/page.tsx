@@ -7,6 +7,7 @@ export default async function Home() {
     return (data)
   }
   const { articles = [] } = await getNews() || {}
+  // const articles = await getNews()
   return (
     <main className="min-h-screen flex flex-col items-center ">
       <section className="max-w-screen-md w-full">

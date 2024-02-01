@@ -63,8 +63,6 @@ const NewsCard: FC<NewsCardProps> = ({
         }
     }, [favorites, title])
     return (
-
-
         <div className="w-[384px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <img className="rounded-t-lg " src={urlToImage} alt="" />
             <div className="p-5">
