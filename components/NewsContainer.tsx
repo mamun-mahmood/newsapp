@@ -10,11 +10,13 @@ interface NewsContainerProps {
     articles: [];
 }
 
-const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
+const NewsContainer: FC<NewsContainerProps> = () => {
     const router = useRouter()
     const [viewMode, setViewMode] = useState("grid-cols-2")
     const [user, setUser] = useState({ uid: "" })
     const [favorites, setFavorites] = useState([]) as any
+    const [articles, setArticles] = useState([]) as any[]
+    const [page, setPage] = useState(1)
     const handleToggle = () => {
         const viewMode = localStorage.getItem("viewMode") || "grid-cols-2"
         if (viewMode === "grid-cols-2") {
@@ -26,7 +28,24 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
             setViewMode("grid-cols-2")
         }
     }
-
+    useEffect(() => {
+        const getNews = async () => {
+            const res = await fetch(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}&pageSize=10&page=${page}`)
+            const data = await res.json()
+            return (data)
+        }
+        getNews().then((data) => {
+            setArticles(data.articles)
+        })
+    }, [page])
+    const handleNext = () => {
+        setPage(page + 1)
+        window.scrollTo(0, 0)
+    }
+    const handlePrev = () => {
+        setPage(page - 1)
+        window.scrollTo(0, 0)
+    }
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -76,7 +95,19 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles }) => {
                     <NewsCard key={idx} title={article.title} description={article.description} urlToImage={article.urlToImage} publishedAt={article.publishedAt} user={user} favorites={favorites} />
                 ))}
 
-            </div></>
+            </div>
+            <div className="flex justify-between items-center space-x-2 h-16 w-full bg-slate-800 p-2 rounded-lg my-2">
+                <button onClick={handlePrev} disabled={page === 1} className={`px-4 py-1 text-lg text-white ${page === 1 ? "bg-slate-400 cursor-not-allowed" : "bg-blue-700"} rounded-md`}>
+                    Prev
+                </button>
+                <span>{page}</span>
+                <button onClick={handleNext} className={
+                    `px-4 py-1 text-lg text-white ${page === 5 ? "bg-slate-400 cursor-not-allowed" : "bg-blue-700"} rounded-md`
+                }>
+                    Next
+                </button>
+            </div>
+        </>
     );
 };
 
