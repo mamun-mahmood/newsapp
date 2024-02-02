@@ -63,7 +63,7 @@ const NewsCard: FC<NewsCardProps> = ({
         }
     }, [favorites, title])
     return (
-        <div className="w-[384px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="max-w-[384px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <img className="rounded-t-lg " src={urlToImage} alt="" />
             <div className="p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">{title}</h5>
