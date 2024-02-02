@@ -70,7 +70,7 @@ const NewsContainer: FC<NewsContainerProps> = ({ articles: articlesData=[] }) =>
         <div className="w-full h-16 animate-pulse bg-slate-700 mt-1 mb-5 rounded-lg  flex items-center justify-center text-lg font-bold" >
             Checking Authentication...
         </div>
-        <div className={`grid ${viewMode} gap-1 text-lg`}>
+        <div className={`grid ${viewMode} gap-1 place-items-center`}>
             {Array(4).fill(0).map((_, idx) => <div className='max-w-[384px] h-[400px] animate-pulse bg-slate-700 rounded-md' key={idx}></div>)}</div>
     </div>
     return (
